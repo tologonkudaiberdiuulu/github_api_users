@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:github_api_users/models/user.dart';
 import 'package:github_api_users/pages/user_detail/widgets/stats.dart';
 import 'package:github_api_users/pages/user_detail/widgets/user_profile.dart';
 import 'package:github_api_users/providers/single_user_provider.dart';
@@ -8,10 +7,6 @@ import 'package:provider/provider.dart';
 
 class UserPage extends StatefulWidget {
   static String routeName = '/user_page';
-  // final String userName;
-
-  // UserPage({required this.userName});
-
   @override
   _UserPageState createState() => _UserPageState();
 }
@@ -29,24 +24,6 @@ class _UserPageState extends State<UserPage> {
             style: TextStyle(color: Colors.grey),
           )
         ],
-      );
-
-  Widget buildAbout(User user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'About',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'user.about',
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
-        ),
       );
 
   @override
@@ -82,11 +59,9 @@ class _UserPageState extends State<UserPage> {
                   const SizedBox(height: 24),
                   buildName(user.userName, user.userEmail),
                   const SizedBox(height: 24),
-
                   const SizedBox(height: 24),
                   Stats(user),
                   const SizedBox(height: 48),
-                  // buildAbout(user),
                 ],
               ),
             );

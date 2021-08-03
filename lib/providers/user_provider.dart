@@ -17,13 +17,10 @@ class UserProvider extends ChangeNotifier {
     await GithubApiUsers()
         .fetchAllUsers(startId: _startId, perPage: _perPage)
         .then((response) {
-      // print(response.body);
       if (response.statusCode == 200) {
         var users = json.decode(response.body);
-        // print(users);
         for (int i = 0; i < users.length; i++) {
           var userT = User.fromJson(users[i]);
-          // print(userT.toJson());
           addUser(userT);
         }
         if (users.length < _perPage) {
@@ -36,7 +33,6 @@ class UserProvider extends ChangeNotifier {
       } else {
         Map<String, dynamic> result = json.decode(response.body);
         setErrorMessage(result['message']);
-        print('Error');
       }
     });
     if (_loading) setLoading(false);
